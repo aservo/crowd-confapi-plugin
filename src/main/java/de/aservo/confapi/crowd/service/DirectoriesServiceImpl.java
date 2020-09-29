@@ -9,6 +9,7 @@ import com.atlassian.crowd.search.builder.QueryBuilder;
 import com.atlassian.crowd.search.query.entity.EntityQuery;
 import com.atlassian.plugin.spring.scanner.annotation.export.ExportAsService;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
+import de.aservo.confapi.commons.exception.NotFoundException;
 import de.aservo.confapi.commons.model.AbstractDirectoryBean;
 import de.aservo.confapi.commons.model.DirectoriesBean;
 import de.aservo.confapi.crowd.model.util.DirectoryBeanUtil;
@@ -56,8 +57,7 @@ public class DirectoriesServiceImpl implements DirectoriesService {
             final Directory directory = directoryManager.findDirectoryById(id);
             return DirectoryBeanUtil.toDirectoryBean(directory);
         } catch (DirectoryNotFoundException e) {
-            log.info("Directory with id {} could not been found", id);
-            return null;
+            throw new NotFoundException(e);
         }
     }
 }

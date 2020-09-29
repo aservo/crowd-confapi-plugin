@@ -2,8 +2,6 @@ package de.aservo.confapi.crowd.rest;
 
 import com.sun.jersey.spi.container.ResourceFilters;
 import de.aservo.confapi.commons.constants.ConfAPI;
-import de.aservo.confapi.commons.exception.NotFoundException;
-import de.aservo.confapi.commons.model.AbstractDirectoryBean;
 import de.aservo.confapi.crowd.filter.SysadminOnlyResourceFilter;
 import de.aservo.confapi.crowd.rest.api.DirectoriesResource;
 import de.aservo.confapi.crowd.service.api.DirectoriesService;
@@ -36,13 +34,7 @@ public class DirectoriesResourceImpl implements DirectoriesResource {
     public Response getDirectory(
             final long id) {
 
-        final AbstractDirectoryBean directoryBean = directoriesService.getDirectory(id);
-
-        if (directoryBean == null) {
-            throw new NotFoundException(String.format("Directory with ID '%d' cannot be found", id));
-        }
-
-        return Response.ok(directoryBean).build();
+        return Response.ok(directoriesService.getDirectory(id)).build();
     }
 
 }
