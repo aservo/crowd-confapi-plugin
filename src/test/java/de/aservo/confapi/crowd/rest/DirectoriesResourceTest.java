@@ -2,7 +2,7 @@ package de.aservo.confapi.crowd.rest;
 
 import de.aservo.confapi.commons.model.DirectoriesBean;
 import de.aservo.confapi.commons.model.DirectoryInternalBean;
-import de.aservo.confapi.crowd.service.api.DirectoriesService;
+import de.aservo.confapi.commons.service.api.DirectoriesService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
-
 import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;

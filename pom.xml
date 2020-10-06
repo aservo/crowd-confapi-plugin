@@ -60,7 +60,7 @@
         <amps.version>8.0.2</amps.version>
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
         <atlassian.spring.scanner.version>2.1.5</atlassian.spring.scanner.version>
-        <confapi-commons.version>0.0.26-SNAPSHOT</confapi-commons.version>
+        <confapi-commons.version>0.0.27-SNAPSHOT</confapi-commons.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
     </properties>
 
