@@ -28,7 +28,7 @@ public class DirectoryBeanUtilTest {
         assertEquals(directoryBean.getId(), directory.getId());
         assertEquals(directoryBean.getName(), directory.getName());
         assertEquals(directoryBean.getDescription(), directory.getDescription());
-        assertEquals(directoryBean.isActive(), directory.isActive());
+        assertEquals(directoryBean.getActive(), directory.isActive());
 
         final DirectoryInternalBean directoryInternalBean = (DirectoryInternalBean) directoryBean;
         final Map<String, String> attributes = directory.getAttributes();
@@ -52,12 +52,7 @@ public class DirectoryBeanUtilTest {
         assertEquals(directoryBean.getId(), directory.getId());
         assertEquals(directoryBean.getName(), directory.getName());
         assertEquals(directoryBean.getDescription(), directory.getDescription());
-        assertEquals(directoryBean.isActive(), directory.isActive());
-    }
-
-    @Test
-    public void testToDirectoryBeanWithNull() {
-        assertNull(DirectoryBeanUtil.toDirectoryBean(null));
+        assertEquals(directoryBean.getActive(), directory.isActive());
     }
 
     @Test
@@ -66,7 +61,6 @@ public class DirectoryBeanUtilTest {
         final Directory directory = DirectoryBeanUtil.toDirectory(directoryBean);
 
         assertNotNull(directory);
-        assertEquals(directory.getId(), directoryBean.getId());
         assertEquals(directory.getName(), directoryBean.getName());
 
         final Map<String, String> attributes = directory.getAttributes();
@@ -78,11 +72,6 @@ public class DirectoryBeanUtilTest {
         assertEquals(String.valueOf(directoryBean.getCredentialPolicy().getPasswordMaxChangeTime()), attributes.get(ATTRIBUTE_PASSWORD_MAX_CHANGE_TIME));
         assertNotNull(attributes.get(ATTRIBUTE_PASSWORD_EXPIRATION_NOTIFICATION_PERIODS));
         assertEquals(directoryBean.getCredentialPolicy().getPasswordEncryptionMethod(), attributes.get(ATTRIBUTE_USER_ENCRYPTION_METHOD));
-    }
-
-    @Test
-    public void testToDirectoryWithNull() {
-        assertNull(DirectoryBeanUtil.toDirectory(null));
     }
 
 }

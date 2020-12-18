@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -23,6 +24,7 @@ public class MockDirectoryInternal implements Directory {
     public static final List<String> ATTRIBUTE_PASSWORD_EXPIRATION_NOTIFICATION_PERIODS_VALUE = Arrays.asList("1", "7");
 
     private final Map<String, String> attributes;
+    private final Set<OperationType> allowedOperations;
 
     public MockDirectoryInternal() {
         this.attributes = Stream.of(new String[][] {
@@ -33,6 +35,7 @@ public class MockDirectoryInternal implements Directory {
                 { ATTRIBUTE_PASSWORD_MAX_CHANGE_TIME, String.valueOf(ATTRIBUTE_PASSWORD_MAX_CHANGE_TIME_VALUE) },
                 { ATTRIBUTE_PASSWORD_EXPIRATION_NOTIFICATION_PERIODS, String.join(",", ATTRIBUTE_PASSWORD_EXPIRATION_NOTIFICATION_PERIODS_VALUE) },
         }).collect(Collectors.toMap(data -> data[0], data -> data[1]));
+        this.allowedOperations = new HashSet<>();
     }
 
     @Override
@@ -67,7 +70,7 @@ public class MockDirectoryInternal implements Directory {
 
     @Override
     public Set<OperationType> getAllowedOperations() {
-        return null;
+        return allowedOperations;
     }
 
     @Override
